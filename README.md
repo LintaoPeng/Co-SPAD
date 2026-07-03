@@ -22,9 +22,9 @@ conda activate Co-SPAD
 conda install pytorch=1.11 torchvision cudatoolkit=11.3 -c pytorch
 ```
 
-**Clone the SPIS repository**
+**Clone the Co-SPAD repository**
 ```
-git clone https://github.com//SPIS.git
+git clone https://github.com//Co-SPAD.git
 cd Co-SPAD
 ```
 
@@ -68,7 +68,7 @@ The detection results will be output directly to the terminal and the visualized
 ### 3.2 Expected output
 
 #### 3.2.1 Expected output of large-scale single-photon imaging
-SPIS reconstruction results will be saved in the `./Large-scale-single-photon-imaging/results` folder.
+Co-SPAD reconstruction results will be saved in the `./Large-scale-single-photon-imaging/results` folder.
 
 ![图片1](./images/1.png)
 
