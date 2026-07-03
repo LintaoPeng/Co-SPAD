@@ -22,9 +22,9 @@ conda activate Co-SPAD
 conda install pytorch=1.11 torchvision cudatoolkit=11.3 -c pytorch
 ```
 
-**Clone the Co-SPAD repository**
+**Clone the SPIS repository**
 ```
-git clone https://github.com//Co-SPAD.git
+git clone https://github.com//SPIS.git
 cd Co-SPAD
 ```
 
@@ -65,6 +65,19 @@ python detection.py
 The detection results will be output directly to the terminal and the visualized detection results will show on the screen.
 
 
+#### 3.1.3 How to run the image-free multimodal sensing demo
+We have provided the measurements for testing in the  `./image-free-multimodal-sensing/features` folder. Before running the demo, please download the MiniCPM-V 4.6 pretrained weights from `https://huggingface.co/openbmb/MiniCPM-V-4.6` and save them in the `./image-free-multimodal-sensing/weights/MiniCPM-V-4.6` folder. You can directly run the following command in the terminal to reconstruct the scene and answer the text question:
+```
+cd ./image-free-multimodal-sensing
+```
+Then, run the following command:
+
+```
+python sensing.py --question "Please describe the reconstructed scene." --image-index 0
+```
+The multimodal sensing result will be output directly to the terminal.
+
+
 ### 3.2 Expected output
 
 #### 3.2.1 Expected output of large-scale single-photon imaging
@@ -77,6 +90,10 @@ Co-SPAD reconstruction results will be saved in the `./Large-scale-single-photon
 The detection results will be output directly to the terminal and the visualized detection results will show on the screen.
 
 ![图片1](./images/3.png)
+
+
+#### 3.2.3 Expected output of image-free multimodal sensing
+The answer to the input question will be output directly to the terminal.
 
 
 ### 3.3 Expected run time for demo on a "normal" desktop computer
@@ -106,4 +123,17 @@ python simulate.py
 Then, run the image-free single-photon object detection:
 ```
 python detection.py
+```
+
+
+### 4.3 How to run the image-free multimodal sensing on your data
+We have provided the optimized small-size patterns in the  `./image-free-multimodal-sensing/pattern` folder. If you want to run image-free multimodal sensing on your data, you should first put your data in the `test` folder and run `simulate.py` to generate the measurements of your data. The program will read images from the test folder, then use the network-optimized small-size pattern to sample the images and generate 2D measurements, and save them in the `./image-free-multimodal-sensing/features` folder.
+
+First, generate measurements:
+```
+python simulate.py
+```
+Then, run the image-free multimodal sensing:
+```
+python sensing.py --question "Please describe the reconstructed scene." --image-index 0
 ```
