@@ -11,7 +11,7 @@ def parse_args():
     parser.add_argument("--image-index", type=int, default=0, help="Measurement index in the .mat file.")
     parser.add_argument("--step1-path", default="./weights/UDLSSPI1k_step1.pth")
     parser.add_argument("--encoder-path", default="./weights/encoder.pth")
-    parser.add_argument("--decoder-path", default="./weights/decoder.py")
+    parser.add_argument("--decoder-path", default="./weights/decoder")
     parser.add_argument("--vlm-dtype", default="auto", help="auto, float16, bfloat16, or float32.")
     parser.add_argument("--device", default=None, help="cuda, cpu, or leave empty for auto.")
     parser.add_argument("--max-new-tokens", type=int, default=512)

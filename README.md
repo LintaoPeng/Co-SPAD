@@ -6,7 +6,7 @@
 ### 1.1 All software dependencies and operating systems
 The project has been tested on Windows 10 and Ubuntu 20.04.6 LTS.
 ### 1.2 Versions the software has been tested on
-The project has been tested on Python 3.9 and pytorch 1.11.
+The project has been tested on Python 3.10 and PyTorch 2.1+.
 ### 1.3 Any required non standard hardware
 There is no non-standard hardware required for this project. 
 
@@ -17,9 +17,8 @@ There is no non-standard hardware required for this project.
 
 **Create conda pytorch environment**
 ```
-conda create -n Co-SPAD python=3.9
+conda create -n Co-SPAD python=3.10
 conda activate Co-SPAD
-conda install pytorch=1.11 torchvision cudatoolkit=11.3 -c pytorch
 ```
 
 **Clone the Co-SPAD repository**
@@ -30,6 +29,7 @@ cd Co-SPAD
 
 **Install dependencies**
 ```
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
     
@@ -66,14 +66,14 @@ The detection results will be output directly to the terminal and the visualized
 
 
 #### 3.1.3 How to run the image-free multimodal sensing demo
-We have provided the measurements for testing in the  `./image-free-multimodal-sensing/features` folder. Before running the demo, please download the MiniCPM-V 4.6 pretrained weights from `https://huggingface.co/openbmb/MiniCPM-V-4.6` and save them in the `./image-free-multimodal-sensing/weights/MiniCPM-V-4.6` folder. You can directly run the following command in the terminal to reconstruct the scene and answer the text question:
+We have provided the measurements for testing in the  `./image-free-multimodal-sensing/features` folder. Before running the demo, please download the pretrained weights of the decoder from `https://huggingface.co/openbmb/MiniCPM-V-4.6` and extract it to the `./image-free-multimodal-sensing/weights` folder. You can directly run the following command in the terminal to answer the text question from the measurements:
 ```
 cd ./image-free-multimodal-sensing
 ```
 Then, run the following command:
 
 ```
-python sensing.py --question "Please describe the scene." --image-index 0
+python sensing.py --question "Please describe the sensed scene." --image-index 0
 ```
 The multimodal sensing result will be output directly to the terminal.
 
@@ -135,5 +135,5 @@ python simulate.py
 ```
 Then, run the image-free multimodal sensing:
 ```
-python sensing.py --question "Please describe the scene." --image-index 0
+python sensing.py --question "Please describe the sensed scene." --image-index 0
 ```

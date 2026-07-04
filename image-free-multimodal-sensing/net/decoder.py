@@ -6,7 +6,7 @@ from PIL import Image
 class Decoder(object):
     def __init__(
         self,
-        model_path="./weights/decoder.py",
+        model_path="./weights/decoder",
         device=None,
         local_files_only=True,
         torch_dtype="auto",
