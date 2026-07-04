@@ -22,9 +22,9 @@ conda activate Co-SPAD
 conda install pytorch=1.11 torchvision cudatoolkit=11.3 -c pytorch
 ```
 
-**Clone the SPIS repository**
+**Clone the Co-SPAD repository**
 ```
-git clone https://github.com//SPIS.git
+git clone https://github.com//Co-SPAD.git
 cd Co-SPAD
 ```
 
@@ -73,7 +73,7 @@ cd ./image-free-multimodal-sensing
 Then, run the following command:
 
 ```
-python sensing.py --question "Please describe the reconstructed scene." --image-index 0
+python sensing.py --question "Please describe the scene." --image-index 0
 ```
 The multimodal sensing result will be output directly to the terminal.
 
@@ -135,5 +135,5 @@ python simulate.py
 ```
 Then, run the image-free multimodal sensing:
 ```
-python sensing.py --question "Please describe the reconstructed scene." --image-index 0
+python sensing.py --question "Please describe the scene." --image-index 0
 ```
