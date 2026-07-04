@@ -66,7 +66,7 @@ The detection results will be output directly to the terminal and the visualized
 
 
 #### 3.1.3 How to run the image-free multimodal sensing demo
-We have provided the measurements for testing in the  `./image-free-multimodal-sensing/features` folder. Before running the demo, please download the pretrained weights of the decoder from `https://huggingface.co/openbmb/MiniCPM-V-4.6` and extract it to the `./image-free-multimodal-sensing/weights` folder. You can directly run the following command in the terminal to answer the text question from the measurements:
+We have provided the measurements for testing in the  `./image-free-multimodal-sensing/features` folder. Before running the demo, please download the pretrained weights of the decoder from [Google Drive](https://drive.google.com/file/d/1J48SDKK1GocskiGUiQZnzA8dd_7yde0i/view?usp=sharing) and extract it to the `./image-free-multimodal-sensing/weights` folder. You can directly run the following command in the terminal to answer the text question from the measurements:
 ```
 cd ./image-free-multimodal-sensing
 ```
