@@ -89,7 +89,7 @@ featuremap_mat = './features/features.mat'
 pattern_path = "./pattern/pattern_1k.mat"
 
 # 模型权重
-model_path = './weights/UDLSSPI1k_step2.pth'
+model_path = './weights/encoder.pth'
 
 # step1权重
 path_step1 = './weights/UDLSSPI1k_step1.pth'

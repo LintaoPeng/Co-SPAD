@@ -1,10 +1,7 @@
-import os
-
 import numpy as np
 import scipy.io
 import torch
 from PIL import Image
-from torchvision.utils import save_image
 
 from net.UDLSSPI1k_step2 import LSSPI_two
 
@@ -15,14 +12,14 @@ def get_device(device=None):
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-def load_imaging_model(
+def load_encoder(
     step1_path="./weights/UDLSSPI1k_step1.pth",
-    step2_path="./weights/UDLSSPI1k_step2.pth",
+    encoder_path="./weights/encoder.pth",
     device=None,
 ):
     device = get_device(device)
     model = LSSPI_two(path=step1_path, map_location=device).to(device)
-    state_dict = torch.load(step2_path, map_location=device)
+    state_dict = torch.load(encoder_path, map_location=device)
     model.load_state_dict(state_dict)
     model.eval()
     return model, device
@@ -40,11 +37,9 @@ def _tensor_to_pil(image_tensor):
 def reconstruct_images(
     model,
     feature_path="./features/features.mat",
-    output_dir="./results",
     device=None,
     image_index=None,
 ):
-    os.makedirs(output_dir, exist_ok=True)
     device = get_device(device)
 
     data = scipy.io.loadmat(feature_path)
@@ -60,12 +55,9 @@ def reconstruct_images(
             feature = torch.from_numpy(features[index].astype(np.float32)).unsqueeze(0).to(device)
             output = model(feature)[0][0]
 
-            image_path = os.path.join(output_dir, "%s.jpg" % index)
-            save_image(output.data, image_path, nrow=5, normalize=True)
             results.append(
                 {
                     "index": index,
-                    "image_path": image_path,
                     "image": _tensor_to_pil(output),
                 }
             )

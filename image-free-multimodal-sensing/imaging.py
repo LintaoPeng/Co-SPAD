@@ -1,4 +1,3 @@
-from torchvision.utils import save_image
 from net.UDLSSPI1k_step2 import *
 from utils import *
 import cv2
@@ -22,16 +21,15 @@ def recon_images(model,feature_path):
     for i in range(len(features)):
         feature = torch.from_numpy(features[i].astype(np.float32)).unsqueeze(0).cuda()
         output = SPIS(feature)
-        img = output[0].data
-        save_image(img, "%s/%s.jpg" % ('results', i), nrow=5, normalize=True)
-        print("The %s-th scene was reconstructed successfully"% (i))
+        _ = output[0].data
+        print("The %s-th scene was reconstructed in memory successfully"% (i))
 
 """重建相关参数"""
 # 测试集
 feature_path = './features/features.mat'
 
 # 模型权重
-model_path = './weights/UDLSSPI1k_step2.pth'
+model_path = './weights/encoder.pth'
 
 # step1权重
 path_step1 = './weights/UDLSSPI1k_step1.pth'
@@ -47,4 +45,4 @@ print('Sampling Rate: 3%; Reconstruction Resolution: 1024*1024.')
     
 # 重建
 recon_images(model,feature_path) 
-print('All images are reconstructed successfully, the outputs are saved in the results folder.')
+print('All images are reconstructed successfully in memory.')
